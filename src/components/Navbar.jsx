@@ -18,7 +18,7 @@ export default function App() {
     return (
         <MDBNavbar expand='lg' dark bgColor='dark'>
             <MDBContainer >
-                <MDBNavbarBrand href='#'>Navbar</MDBNavbarBrand>
+                <MDBNavbarBrand href='#'>Schedule Meeting</MDBNavbarBrand>
                 <MDBNavbarToggler
                     type='button'
                     data-target='#navbarColor02'
