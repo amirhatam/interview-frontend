@@ -11,33 +11,32 @@ import {
     MDBCollapse
 } from 'mdb-react-ui-kit';
 
+
 export default function App() {
-    const [showBasic, setShowBasic] = useState(false);
+    const [showNavColorSecond, setShowNavColorSecond] = useState(false);
 
     return (
-        <MDBNavbar expand='lg' light bgColor='light'>
+        <MDBNavbar expand='lg' dark bgColor='dark'>
             <MDBContainer >
-                <MDBNavbarBrand href='#'>Brand</MDBNavbarBrand>
-
+                <MDBNavbarBrand href='#'>Navbar</MDBNavbarBrand>
                 <MDBNavbarToggler
-                    aria-controls='navbarSupportedContent'
+                    type='button'
+                    data-target='#navbarColor02'
+                    aria-controls='navbarColor02'
                     aria-expanded='false'
                     aria-label='Toggle navigation'
-                    onClick={() => setShowBasic(!showBasic)}
+                    onClick={() => setShowNavColorSecond(!showNavColorSecond)}
                 >
                     <MDBIcon icon='bars' fas />
                 </MDBNavbarToggler>
-
-                <MDBCollapse navbar show={showBasic}>
-                    <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
-                        <MDBNavbarItem>
-                            <MDBNavbarLink active aria-current='page' href='#'>
+                <MDBCollapse show={showNavColorSecond} navbar id='navbarColor02'>
+                    <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
+                        <MDBNavbarItem className='active'>
+                            <MDBNavbarLink aria-current='page' href='#'>
                                 Home
                             </MDBNavbarLink>
                         </MDBNavbarItem>
-
                     </MDBNavbarNav>
-
                     <form className='d-flex input-group w-auto'>
                         <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
                             <MDBNavbarItem>
@@ -48,6 +47,5 @@ export default function App() {
                 </MDBCollapse>
             </MDBContainer>
         </MDBNavbar>
-
     );
 }
