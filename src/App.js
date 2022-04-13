@@ -1,11 +1,14 @@
 import React from 'react';
-import { MDBBtn, MDBContainer } from 'mdb-react-ui-kit';
+// import { MDBBtn, MDBContainer } from 'mdb-react-ui-kit';
+import NavbarPage from './components/Navbar';
 
 function App() {
   return (
-    <MDBContainer fluid>
+    <div >
+      <NavbarPage />
+
       TEST
-    </MDBContainer>
+    </div>
   );
 }
 
