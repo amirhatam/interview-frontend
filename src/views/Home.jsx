@@ -11,22 +11,13 @@ import Dropdown from "../components/Dropdown";
 export const Home = () => {
     const [startDate, setStartDate] = useState(new Date());
 
-    // let res = moment().format(JSON.stringify(startDate))
-    // let date = moment().format(JSON.stringify(startDate))
-    // let date = startDate
 
     console.log("===>", moment(startDate));
-    // console.log("===>", moment(date));
-    // console.log("===>", JSON.stringify(moment(date)));
 
-    // const start = moment(startDate);
+
 
     const start = new Date('2022-04-21 08:00:00');
     const end = new Date('2022-04-21 18:00:00');
-
-    // console.log(start);
-
-
 
 
     const events = [
@@ -47,7 +38,7 @@ export const Home = () => {
     function findFreeTimes(start, end, duration, events) {
 
         //  Duration In Millisecs
-        const durationMS = moment.duration(duration, "minutes").as('milliseconds');
+        const durationSec = moment.duration(duration, "minutes").as('seconds');
         const eventsFixed = []
         const freeTimes = []
 
@@ -63,10 +54,10 @@ export const Home = () => {
             let eventEnd = e.end;
             // console.log("=>", moment(eventStart).diff(start));
 
-            if ((moment(eventStart).diff(start) > durationMS) && i === 0) {
+            if ((moment(eventStart).diff(start) > durationSec) && i === 0) {
                 freeTimes.push({ start: start, end: eventStart });
                 previousEnd = eventEnd;
-            } else if ((moment(eventStart).diff(moment(previousEnd)) > durationMS)) {
+            } else if ((moment(eventStart).diff(moment(previousEnd)) > durationSec)) {
                 freeTimes.push({ start: previousEnd, end: eventStart });
                 previousEnd = eventEnd;
             } else {
@@ -75,30 +66,28 @@ export const Home = () => {
         })
 
 
-        const openTimes = parseInt(moment().startOf(start).from(end))
-        // const openTimesMS = moment.duration(openTimes, "hours").as('milliseconds')
-        // console.log("======>", openTimesMS);
-        // console.log("======>", durationMS);
-
-        // const hhStart = start.getHours()
-        // const hhEnd = end.getHours()
         const openHours = end.getHours() - start.getHours()
+        const openTimesSec = moment.duration(openHours, "hours").as('seconds')
 
-        console.log("======>", openHours);
+        console.log("======>", openTimesSec);
+        console.log("======>", durationSec);
+
+        // console.log("======>", openHours);
 
         // const freeT = []
         let freeT = 0
 
-        // let res = openTimesMS / durationMS
-        // for (let i = 0; i <= openTimesMS; i++) {
-        //     if (i % durationMS == 0) {
-        //         freeT++
-        //     }
+        let res = openTimesSec / durationSec
+        for (let i = 0; i <= openTimesSec; i++) {
+            if (i % durationSec == 0) {
+                freeT++
+            }
 
-        // }
-        // console.log("======>", freeT);
+        }
 
-        // console.log("======>", new Date(new Date(start)));
+
+
+
 
         // Get last puzzle of free time with condition(Ternary)
         moment(end).diff(previousEnd) ? freeTimes.push({ start: previousEnd, end: end }) : null
