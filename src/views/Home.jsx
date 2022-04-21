@@ -1,4 +1,4 @@
-import { MDBContainer, MDBModalBody, MDBModalHeader, MDBModalTitle } from "mdb-react-ui-kit";
+import { MDBBtn, MDBCol, MDBContainer, MDBModalBody, MDBModalHeader, MDBModalTitle, MDBRow } from "mdb-react-ui-kit";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 const moment = require('moment')
@@ -10,6 +10,7 @@ import Dropdown from "../components/Dropdown";
 
 export const Home = () => {
     const [startDate, setStartDate] = useState(new Date());
+    const [availableAppointment, setAvailableAppointment] = useState([]);
 
 
     console.log("===>", moment(startDate));
@@ -52,7 +53,6 @@ export const Home = () => {
         eventsFixed.map((e, i) => { //find free times
             let eventStart = e.start;
             let eventEnd = e.end;
-            // console.log("=>", moment(eventStart).diff(start));
 
             if ((moment(eventStart).diff(start) > durationSec) && i === 0) {
                 freeTimes.push({ start: start, end: eventStart });
@@ -89,27 +89,27 @@ export const Home = () => {
 
                 // freeT.push(moment.duration(i, "seconds").as("minutes"))
             }
-
         }
+        // listOfFreeTimes.push(listOfFreeTimes)
+        // setAvailableAppointment(listOfFreeTimes)
+        // console.log("======>", availableAppointment);
+        // console.log("======>", listOfFreeTimes);
 
-        console.log("======>", listOfFreeTimes);
 
         //-------------------------------------------------------------------------//
 
         // Get last puzzle of free time with condition(Ternary)
         moment(end).diff(previousEnd) ? freeTimes.push({ start: previousEnd, end: end }) : null
 
-        return freeTimes;
+        // return freeTimes;
+        return listOfFreeTimes;
     }
-
 
 
     const freeSlots = findFreeTimes(start, end, 30, events);
 
 
     console.log(freeSlots);
-
-
 
 
     return (
@@ -127,7 +127,20 @@ export const Home = () => {
                         />
                         <Dropdown />
                     </div>
+                    <MDBRow>
+                        {
+                            freeSlots.map((e, i) => {
+                                return <>
+                                    <MDBCol className="col-1 my-5" key={i}>
+                                        <MDBBtn color="info">
+                                            {e.start.substring(10)}
+                                        </MDBBtn>
+                                    </MDBCol>
 
+                                </>
+                            })
+                        }
+                    </MDBRow>
                 </MDBModalBody>
             </MDBContainer>
         </>
