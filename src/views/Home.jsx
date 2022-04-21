@@ -74,18 +74,21 @@ export const Home = () => {
 
         // console.log("======>", openHours);
 
-        // const freeT = []
-        let freeT = 0
+        const freeT = []
+        // let freeT = 0
 
-        let res = openTimesSec / durationSec
         for (let i = 0; i <= openTimesSec; i++) {
-            if (i % durationSec == 0) {
-                freeT++
+            if (i % durationSec == 0 && i + durationSec <= openTimesSec) {
+                let eventStart = moment().hour('08').minute('00').add(i, 'seconds').format("HH:mm")
+                let eventEnd = moment().hour('08').minute('00').add(i + durationSec, 'seconds').format("HH:mm")
+                freeT.push({ start: eventStart, end: eventEnd })
+
+                // freeT.push(moment.duration(i, "seconds").as("minutes"))
             }
 
         }
 
-
+        console.log("======>", freeT);
 
 
 
