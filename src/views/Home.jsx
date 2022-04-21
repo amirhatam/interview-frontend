@@ -20,8 +20,9 @@ export const Home = () => {
     // console.log("===>", JSON.stringify(moment(date)));
 
     // const start = moment(startDate);
-    const start = moment().format('2022-04-20T08:00:00-05:00');
-    const end = moment().format('2022-04-20T18:00:00-05:00');
+
+    const start = new Date('2022-04-21 08:00:00');
+    const end = new Date('2022-04-21 18:00:00');
 
     // console.log(start);
 
@@ -30,16 +31,16 @@ export const Home = () => {
 
     const events = [
         {
-            "start": "2022-04-20T12:00:00-05:00",
-            "end": "2022-04-20T12:30:00-05:00",
+            "start": "2022-04-21 12:00:00",
+            "end": "2022-04-21 12:30:00",
         },
         {
-            "start": "2022-04-20T14:00:00-05:00",
-            "end": "2022-04-20T16:00:00-05:00"
+            "start": "2022-04-21 14:00:00",
+            "end": "2022-04-21 16:00:00"
         },
         {
-            "start": "2022-04-20T17:00:00-05:00",
-            "end": "2022-04-20T17:15:00-05:00"
+            "start": "2022-04-21 17:00:00",
+            "end": "2022-04-21 17:30:00"
         },
     ];
 
@@ -78,7 +79,12 @@ export const Home = () => {
         // const openTimesMS = moment.duration(openTimes, "hours").as('milliseconds')
         // console.log("======>", openTimesMS);
         // console.log("======>", durationMS);
-        console.log("======>", openTimes);
+
+        // const hhStart = start.getHours()
+        // const hhEnd = end.getHours()
+        const openHours = end.getHours() - start.getHours()
+
+        console.log("======>", openHours);
 
         // const freeT = []
         let freeT = 0
