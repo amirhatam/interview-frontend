@@ -10,11 +10,9 @@ import Dropdown from "../components/Dropdown";
 
 export const Home = () => {
     const [startDate, setStartDate] = useState(new Date());
-    const [availableAppointment, setAvailableAppointment] = useState([]);
 
 
     console.log("===>", moment(startDate));
-
 
 
     const start = new Date('2022-04-21 08:00');
@@ -90,10 +88,6 @@ export const Home = () => {
                 // freeT.push(moment.duration(i, "seconds").as("minutes"))
             }
         }
-        // listOfFreeTimes.push(listOfFreeTimes)
-        // setAvailableAppointment(listOfFreeTimes)
-        // console.log("======>", availableAppointment);
-        // console.log("======>", listOfFreeTimes);
 
 
         //-------------------------------------------------------------------------//
@@ -130,14 +124,17 @@ export const Home = () => {
                     <MDBRow>
                         {
                             freeSlots.map((e, i) => {
-                                return <>
+
+
+                                return (
                                     <MDBCol className="col-1 my-5" key={i}>
-                                        <MDBBtn color="info">
+                                        <MDBBtn key={i} color="info">
                                             {e.start.substring(10)}
                                         </MDBBtn>
                                     </MDBCol>
+                                )
 
-                                </>
+
                             })
                         }
                     </MDBRow>
