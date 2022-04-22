@@ -13,6 +13,8 @@ import Dropdown from "../components/Dropdown";
 export const Home = () => {
     const [startDate, setStartDate] = useState(new Date());
 
+    const [duration, setDuration] = useState(30);
+
 
     console.log("===>", moment(startDate));
 
@@ -54,7 +56,7 @@ export const Home = () => {
                             onChange={(date) => setStartDate(date)}
                             className="fw-lighter p-2 square border border-2"
                         />
-                        <Dropdown />
+                        <Dropdown setDuration={setDuration} />
                     </div>
                     <MDBRow>
                         {
