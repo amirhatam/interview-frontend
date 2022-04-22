@@ -12,35 +12,38 @@ import { findFreeTimes } from "../components/FreeSlots";
 
 export const Home = () => {
     const [startDate, setStartDate] = useState(new Date());
-
+    const [timeList, setTimeList] = useState([]);
     const [duration, setDuration] = useState(30);
 
 
     console.log("===>", moment(startDate));
 
 
-    const start = new Date('2022-04-21 08:00');
-    const end = new Date('2022-04-21 18:00');
+    const start = new Date('2022-04-22 08:00');
+    const end = new Date('2022-04-22 18:00');
 
 
     const events = [
         {
-            "start": "2022-04-21 12:00",
-            "end": "2022-04-21 12:30",
+            "start": "2022-04-22 12:00",
+            "end": "2022-04-22 12:30",
         },
         {
-            "start": "2022-04-21 14:00",
-            "end": "2022-04-21 16:00"
+            "start": "2022-04-22 14:00",
+            "end": "2022-04-22 16:00"
         },
         {
-            "start": "2022-04-21 17:00",
-            "end": "2022-04-21 17:30"
+            "start": "2022-04-22 17:00",
+            "end": "2022-04-22 17:30"
         },
     ];
 
-    const freeSlots = findFreeTimes(start, end, duration, events);
+    const freeSlots = findFreeTimes(start, end, duration, events, timeList, setTimeList);
 
-    console.log(freeSlots);
+    // console.log(freeSlots);
+
+
+    console.log("timeList", timeList);
 
     return (
         <>
@@ -59,8 +62,7 @@ export const Home = () => {
                     </div>
                     <MDBRow>
                         {
-                            freeSlots.map((e, i) => {
-
+                            timeList.map((e, i) => {
                                 return (
                                     <MDBCol className="col-1 my-5" key={i}>
                                         <MDBBtn key={i} color="info">

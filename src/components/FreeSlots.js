@@ -1,7 +1,8 @@
 const moment = require('moment')
 
 
-function findFreeTimes(start, end, duration, events) {
+function findFreeTimes(start, end, duration, events, timeList, setTimeList) {
+
 
     //  Duration In Millisecs
     const durationSec = moment.duration(duration, "minutes").as('seconds');
@@ -51,9 +52,16 @@ function findFreeTimes(start, end, duration, events) {
             let eventEnd = `${date} ${moment().hour('08').minute('00').add(i + durationSec, 'seconds').format("HH:mm")}`
 
             listOfFreeTimes.push({ start: eventStart, end: eventEnd })
-
+            // timeList.push({ start: eventStart, end: eventEnd })
             // freeT.push(moment.duration(i, "seconds").as("minutes"))
         }
+    }
+
+
+
+    if (timeList.length != listOfFreeTimes.length) {
+
+        setTimeList(listOfFreeTimes)
     }
 
 
@@ -63,6 +71,8 @@ function findFreeTimes(start, end, duration, events) {
     moment(end).diff(previousEnd) ? freeTimes.push({ start: previousEnd, end: end }) : null
 
     // return freeTimes;
+
+
     return listOfFreeTimes;
 }
 
