@@ -5,6 +5,7 @@ import Dropdown from "../components/Dropdown";
 import DatePicker from "react-datepicker";
 const moment = require('moment')
 import { findFreeTimes } from "../components/FreeSlots";
+import PickTimes from "../components/PickTimes";
 
 
 
@@ -50,7 +51,7 @@ export const Home = () => {
     // console.log(freeSlots);
 
 
-    // console.log("timeList", timeList);
+    console.log("timeList", timeList);
 
     return (
         <>
@@ -67,19 +68,9 @@ export const Home = () => {
                         />
                         <Dropdown setDuration={setDuration} />
                     </div>
-                    <MDBRow>
-                        {
-                            timeList.map((e, i) => {
-                                return (
-                                    <MDBCol className="col-1 my-5" key={i}>
-                                        <MDBBtn key={i} color="info">
-                                            {e.start.substring(10)}
-                                        </MDBBtn>
-                                    </MDBCol>
-                                )
-                            })
-                        }
-                    </MDBRow>
+
+                    <PickTimes timeList={timeList} />
+
                 </MDBModalBody>
             </MDBContainer>
         </>

@@ -32,7 +32,6 @@ function findFreeTimes(start, end, duration, events, timeList, setTimeList) {
     })
     //--------------------------------------------------------------------//
 
-    // const date = moment().format('LL', start)
     const yy = start.getFullYear()
     const mm = start.getMonth() + 1
     const dd = start.getDate()
@@ -41,8 +40,6 @@ function findFreeTimes(start, end, duration, events, timeList, setTimeList) {
     const openingHours = end.getHours() - start.getHours()
     const openingTimesSec = moment.duration(openingHours, "hours").as('seconds')
 
-    // console.log("======>", openingTimesSec);
-    // console.log("======>", durationSec);
 
     const listOfFreeTimes = []
 
@@ -52,8 +49,6 @@ function findFreeTimes(start, end, duration, events, timeList, setTimeList) {
             let eventEnd = `${date} ${moment().hour('08').minute('00').add(i + durationSec, 'seconds').format("HH:mm")}`
 
             listOfFreeTimes.push({ start: eventStart, end: eventEnd })
-            // timeList.push({ start: eventStart, end: eventEnd })
-            // freeT.push(moment.duration(i, "seconds").as("minutes"))
         }
     }
 
