@@ -72,6 +72,7 @@ function findFreeTimes(start, end, duration, events, timeList, setTimeList) {
 
     // return freeTimes;
 
+    // console.log(freeTimes);
 
     return listOfFreeTimes;
 }

@@ -15,12 +15,19 @@ export const Home = () => {
     const [timeList, setTimeList] = useState([]);
     const [duration, setDuration] = useState(30);
 
+    const yy = startDate.getFullYear()
+    const mm = startDate.getMonth() + 1
+    const dd = startDate.getDate()
+    const date = `${yy}-${mm}-${dd}` //GET Date in format year-month-day
 
-    console.log("===>", moment(startDate));
+
+    // console.log("===>", moment(`${yy}-${mm}-${dd}`));
 
 
-    const start = new Date('2022-04-22 08:00');
-    const end = new Date('2022-04-22 18:00');
+    const start = new Date(`${date} 08:00`);
+    const end = new Date(`${date} 18:00`);
+    // const start = new Date('2022-04-22 08:00');
+    // const end = new Date('2022-04-22 18:00');
 
 
     const events = [
@@ -43,7 +50,7 @@ export const Home = () => {
     // console.log(freeSlots);
 
 
-    console.log("timeList", timeList);
+    // console.log("timeList", timeList);
 
     return (
         <>
