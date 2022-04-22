@@ -1,13 +1,13 @@
 import { MDBBtn, MDBCol, MDBContainer, MDBModalBody, MDBModalHeader, MDBModalTitle, MDBRow } from "mdb-react-ui-kit";
 import React, { useState } from "react";
+import "react-datepicker/dist/react-datepicker.css";
+import Dropdown from "../components/Dropdown";
 import DatePicker from "react-datepicker";
 const moment = require('moment')
 import { findFreeTimes } from "../components/FreeSlots";
 
 
 
-import "react-datepicker/dist/react-datepicker.css";
-import Dropdown from "../components/Dropdown";
 
 
 export const Home = () => {
@@ -38,10 +38,9 @@ export const Home = () => {
         },
     ];
 
-    const freeSlots = findFreeTimes(start, end, 30, events);
+    const freeSlots = findFreeTimes(start, end, duration, events);
 
     console.log(freeSlots);
-
 
     return (
         <>

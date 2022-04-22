@@ -3,14 +3,11 @@ import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem, MDBDr
 import '../assets/styles/Dropdown.css'
 
 export default function Dropdown(props) {
-    const [inputValue, setInputValue] = useState("30 Minutes")
 
 
     const handleClick = (e) => {
-        setInputValue(e.target.value);
+        props.setDuration(e.target.value);
     }
-
-    console.log(inputValue);
 
     return (
         <MDBDropdown>
@@ -20,7 +17,7 @@ export default function Dropdown(props) {
             <MDBDropdownMenu >
                 <MDBDropdownItem >
                     <MDBBtn
-                        value={'30 Minutes'}
+                        value={30}
                         outline
                         color="info"
                         onClick={handleClick}
@@ -31,7 +28,7 @@ export default function Dropdown(props) {
                 </MDBDropdownItem>
                 <MDBDropdownItem>
                     <MDBBtn
-                        value={'45 Minutes'}
+                        value={45}
                         outline
                         color="info"
                         onClick={handleClick}
@@ -41,7 +38,7 @@ export default function Dropdown(props) {
                 </MDBDropdownItem>
                 <MDBDropdownItem>
                     <MDBBtn
-                        value={'1 Hour'}
+                        value={60}
                         outline
                         color="info"
                         onClick={handleClick}
